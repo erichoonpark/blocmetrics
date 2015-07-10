@@ -1,0 +1,5 @@
+<% if @app.destroyed? %>
+   $('#app-'+<%= @app.id %>).fadeOut();
+ <% else %>
+   $('#app-'+<%= @app.id %>).prepend("<div class='alert alert-danger'><%= flash[:error] %></div>");
+ <% end %>

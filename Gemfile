@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 #Installing figaro for obfuscation
 gem 'figaro', '1.0'
+#Seeding the database
+gem 'faker'
 #Installing Twitter Bootstrap
 gem 'bootstrap-sass'
 # Use ActiveModel has_secure_password

@@ -1,0 +1,11 @@
+<h1>All Apps</h1>
+ <% @apps.each do |app| %>
+   <div class="media">
+     <div class="media-body">
+       <h5 id="app-<%=app.id%>">
+         <%= link_to app.title, app %>
+         <%= link_to "Delete", app , method: :delete, remote: true %>
+       </h5>
+     </div>
+   </div>
+ <% end %>

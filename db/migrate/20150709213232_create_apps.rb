@@ -1,7 +1,7 @@
 class CreateApps < ActiveRecord::Migration
   def change
     create_table :apps do |t|
-      t.reference :user
+      t.references :user
       t.string :title
       t.string :url
 
