@@ -42,10 +42,8 @@ class AppsController < ApplicationController
     @app = App.find(params[:id])
     if @app.destroy
       flash[:notice] = "App was removed."
-      redirect_to @app
     else
       flash[:error] = "App couldn't be deleted. Try again."
-      redirect_to @app
     end
 
      respond_to do |format|
