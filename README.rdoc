@@ -1,28 +1,55 @@
-== README
+Blocmetrics
+Blocmetrics is an analytics tool for tracking events on websites. Integrate with web apps to track user activity and report results.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app powers Blocmetrics at http://julia-blocmetrics.herokuapp.com/
 
-Things you may want to cover:
+Getting Started
 
-* Ruby version
+Software requirements
 
-* System dependencies
+Rails 4.2.2
 
-* Configuration
+Ruby 2.2.2p95
 
-* Database creation
+PostgreSQL 9.3.x or higher
 
-* Database initialization
+Navigate to the Rails application
 
-* How to run the test suite
+$ cd /path/to/rails/application
+Set configuration files
 
-* Services (job queues, cache servers, search engines, etc.)
+$ cp config/database.yml.template config/database.yml
+$ cp config/initializers/mail.rb.template config/initializers/mail.rb
+Note: You may need to edit the above files as necessary for your system.
 
-* Deployment instructions
+Create the database
 
-* ...
+ $ pgstart
+ $ rake db:create
+Migrating and seeding the database
 
+$ rake db:migrate
+$ rake db:seed
+Starting the local server
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+$ rails server
+
+   or
+
+$ rails s
+Production Deployment
+
+  $ git push heroku master
+  $ heroku run rake db:migrate
+Support
+
+Bug reports and feature requests can be filed with the rest for the Ruby on Rails project here:
+
+{File Bug Reports and Features}[https://github.com/erichoonpark/blocmetrics/issues]
+License
+
+Blocmetrics is released under the license.
+
+Copyright
+
+copyright:: (c) Copyright 2015 Blocmetrics. All Rights Reserved.
