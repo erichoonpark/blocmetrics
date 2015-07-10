@@ -1,5 +1,14 @@
 <h1><%= @app.title %></h1>
-<%= @app.url %>
+<h5>App URL: <%= @app.url %></h5>
+<h5>App User_id: <%= @app.user_id %></h5>
 <br>
-<%= @app.user_id %><br>
+
+<h2> Events </h2>
+<% @events.each do |event| %>
+    <div>
+      <%= event[0] %><span class="badge"><%= event[1].count %></span>
+    </div>
+<% end %>
+
+<br>
 <%= link_to "Edit", edit_app_path(@app), class: 'btn btn-success' %>
