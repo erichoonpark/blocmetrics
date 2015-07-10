@@ -17,6 +17,8 @@ class AppsController < ApplicationController
 
   def show
     @app = App.find(params[:id])
+    @events = @app.events.group_by(&:name)
+    p @events
   end
 
   def index
