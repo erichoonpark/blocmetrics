@@ -1,4 +1,4 @@
-class API::EventsController < ApplicationController
+class Api::EventsController < ApplicationController
   before_filter :set_access_control_headers
 
   def set_access_control_headers
@@ -15,7 +15,7 @@ class API::EventsController < ApplicationController
   respond_to :json
 
   def create
-    registered_application = RegisteredApplication.find_by(url: request.env['HTTP_ORIGIN'])
+    registered_application = App.find_by(url: request.env['HTTP_ORIGIN'])
     if registered_application == nil
       render json: "Unregistered application", status: :unprocessable_entity
     else
@@ -31,16 +31,16 @@ class API::EventsController < ApplicationController
        params.permit(:event_name)
     end
 
-  # def permission_denied_error
-  #   error(403, 'Permission Denied!')
-  # end
-  #
-  # def error(status, message = 'Something went wrong')
-  #   response = {
-  #     response_type: "ERROR",
-  #     message: message
-  # }
-  #
-  # render json: response.to_json, status: status
-  # end
+  def permission_denied_error
+    error(403, 'Permission Denied!')
+  end
+
+  def error(status, message = 'Something went wrong')
+    response = {
+      response_type: "ERROR",
+      message: message
+  }
+
+  render json: response.to_json, status: status
+  end
 end
