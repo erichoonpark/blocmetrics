@@ -6,7 +6,7 @@
 <h2> Events </h2>
 <% @events.each do |event| %>
     <div>
-      <%= event[0] %><span class="badge"><%= event[1].count %></span>
+      <%= event[0] %><span class="badge"><%= event[1].first.count %></span>
     </div>
 <% end %>
 

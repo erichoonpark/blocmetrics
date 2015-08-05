@@ -4,8 +4,9 @@
      <div class="media-body">
        <h5 id="app-<%=app.id%>">
          <%= link_to app.title, app %>
-         <%= link_to "Delete", app , method: :delete, remote: true %>
+         <i class="icon-remove-sign"><%= link_to "Delete", app , method: :delete, remote: true %></i>
        </h5>
      </div>
    </div>
  <% end %>
+ <%= link_to "New App", method: :post, remote: true %>

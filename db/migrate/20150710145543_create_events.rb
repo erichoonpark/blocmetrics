@@ -3,6 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.references :app, index: true
       t.string :name
+      t.integer :count
 
       t.timestamps null: false
     end

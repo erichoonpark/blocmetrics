@@ -16,11 +16,22 @@ class Api::EventsController < ApplicationController
 
   def create
     registered_application = App.find_or_create_by(url: request.env['HTTP_ORIGIN'])
-    @event = registered_application.events.find_or_create_by(event_params)
+    @event = registered_application.events.find_by(event_params)
     if @event == nil
-      render json: "Broken event", status: :unprocessable_entity
+      @event = registered_application.events.build(event_params)
+      @event.count = 1
+      if @event.save
+        render json: @event, status: :created
+      else
+        render json: "Broken event", status: :unprocessable_entity
+      end
     else
-      render json: @event, status: :created
+      @event.count += 1
+      if @event.save
+        render json: @event, status: :created
+      else
+        render json: "Broken event", status: :unprocessable_entity
+      end
     end
   end
 
@@ -29,7 +40,7 @@ class Api::EventsController < ApplicationController
   # Rather than using before_actions to authenticate actions, we suggest using
   # "guard clauses" like `permission_denied_error unless condition`
     def event_params
-       params.permit(:name)
+       params.require(:event).permit(:name)
     end
 
   def permission_denied_error
